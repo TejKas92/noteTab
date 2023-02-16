@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Note Tab</title>
+    <style>
+        table, td {
+            border: solid 1px #ccc;
+        }
+        table{
+            border-collapse: collapse;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Add a new score</h1>
+    <form method="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    
+    <h1 style="margin-top: 10vh;">Scores table</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>Student</td>
+                <td>Score</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for note in notes %}
+            <tr>
+                <td>{{note.student}}</td>
+                <td>{{note.note}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </body>
+</html>
